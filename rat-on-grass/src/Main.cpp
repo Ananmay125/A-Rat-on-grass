@@ -1,37 +1,20 @@
-﻿#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <iostream>
+﻿#include <iostream>
 
-int main()
-{
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#include "header-files/Window.h"
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
-    if (window == NULL)
-    {
-        std::cout << "Failed to create GLFW window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
+int main() {
 
-    glfwMakeContextCurrent(window);
+	Window window(840, 600, "A fat rat on grass");
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
+	while (!window.ShouldClose()) {
 
-    while (!glfwWindowShouldClose(window))
-    {
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+		glClearColor(0.3f, 0.2f, 0.7f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-    glfwTerminate();
-    return 0;
+		window.swapBuffer();
+		window.pollEvents();
+	}
+
+	glfwTerminate();
+	return 0;
 }

@@ -35,7 +35,7 @@ if(NOT TINYGLTF_INCLUDE_DIR)
 endif()
 
 # Add source to this project's executable
-add_executable(${PROJECT_NAME} "src/Main.cpp")
+add_executable(${PROJECT_NAME} "src/Main.cpp" "src/Window.cpp" "src/header-files/Rat.h" "src/header-files/Window.h")
 
 # Include header-only libraries
 target_include_directories(${PROJECT_NAME} PRIVATE 
